@@ -14,6 +14,7 @@ tesselClient.connect = function (port, host) {
   // Parse messages, crudely.
   carrier.carry(client, function (data) {
     data = String(data);
+    console.log(data);
     var type = 's';
     if (data.match(/^\#\&/)) {
       type = data.charAt(2);
