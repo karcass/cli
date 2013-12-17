@@ -5,6 +5,7 @@ var net = require('net')
   , jssc = require('jssc')
 
 var modem = process.argv[2];
+var isChild = require.main != module;
 
 var serial = jssc.listen(modem);
 serial.stderr.pipe(process.stderr);
@@ -69,6 +70,8 @@ serial.on('error', function (err) {
 });
 //     serial.write("!\n", function () {
 
-serial.on('connected', function () {
-  process.send({ ready: true });
-});
+if (isChild) {
+  serial.on('connected', function () {
+    process.send({ ready: true });
+  });
+}
