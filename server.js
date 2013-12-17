@@ -54,6 +54,7 @@ tesselserver.listen(6540);
 
 
 serial.on('data', function (data) {
+  console.log('-->', data);
   if (!connected) {
     backlog.push(data);
   } else {
