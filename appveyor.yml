@@ -1,0 +1,3 @@
+branches:
+  except:
+    - travis-pr-33-linux
